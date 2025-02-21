@@ -39,7 +39,7 @@ def main(page: ft.Page):
         if final_results:
             n = 1
             for valid in final_results:
-                res = f"RANK: {n}, {valid[1]} - {valid[2]}, SCORE: {valid[3]}"
+                res = f"RANK: {n}  {valid[1]} - {valid[2]}  {valid[3]}"
                 results_container.controls.append(
                     ft.Row(
                         controls=[ft.Text(res, size=16, no_wrap=False)],
