@@ -247,7 +247,7 @@ def main(page: ft.Page):
                     [
                         ft.Text("Valid input values:", size=14, weight="underline", no_wrap=False),
                         ft.Text("1-9=Number, T=Ten, J=Jack", size=12, no_wrap=False),
-                        ft.Text("Q=Queen, K=King, A=Ace, X=Joker", size=12, no_wrap=False)
+                        ft.Text("Q=Queen, K=King, A=Ace of Spade, X=Joker", size=12, no_wrap=False)
                     ],
                 ),
                 ft.Container(
@@ -257,7 +257,6 @@ def main(page: ft.Page):
                 )
             ],
             spacing=20,
-            horizontal_alignment="center"
         )
     )
 
