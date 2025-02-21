@@ -1,4 +1,5 @@
 import flet as ft
+import re
 
 def main(page: ft.Page):
     # Define allowed characters FIRST to avoid NameError
@@ -38,11 +39,10 @@ def main(page: ft.Page):
         if final_results:
             n = 1
             for valid in final_results:
-                res = f"Rank: {n}, Cards: {valid[1]} - {valid[2]}, Score: {valid[3]}"
+                res = f"RANK: {n}, {valid[1]} - {valid[2]}, SCORE: {valid[3]}"
                 results_container.controls.append(
                     ft.Row(
-                        controls=[ft.Text(res, size=16)],
-                        alignment=ft.MainAxisAlignment.CENTER,
+                        controls=[ft.Text(res, size=16, no_wrap=False)],
                     )
                 )
                 n += 1
@@ -50,7 +50,6 @@ def main(page: ft.Page):
             results_container.controls.append(
                 ft.Row(
                     controls=[ft.Text("No valid combinations! You lose!", size=16)],
-                    alignment=ft.MainAxisAlignment.CENTER,
                 )
             )
             
@@ -234,7 +233,7 @@ def main(page: ft.Page):
     page.add(
         ft.Column(
             [
-                ft.Row([ft.Text("COWCULATOR", size=48)], alignment="center"),
+                ft.Row([ft.Text("COWCULATOR", size=48, weight="bold")], alignment="center"),
                 ft.Row(text_fields, alignment="center"),
                 ft.Row(
                     [
@@ -246,16 +245,15 @@ def main(page: ft.Page):
                 ),
                 ft.Column(
                     [
-                        ft.Text("Valid input values:", size=14),
-                        ft.Text("1-9=Number, T=Ten, J=Jack", size=12),
-                        ft.Text("Q=Queen, K=King, A=Ace, X=Joker", size=12)
+                        ft.Text("Valid input values:", size=14, weight="underline", no_wrap=False),
+                        ft.Text("1-9=Number, T=Ten, J=Jack", size=12, no_wrap=False),
+                        ft.Text("Q=Queen, K=King, A=Ace, X=Joker", size=12, no_wrap=False)
                     ],
-                    horizontal_alignment="center"
                 ),
                 ft.Container(
                     content=results_container,
                     height=300,  # Fixed height for results area
-                    padding=10
+                    padding=10,
                 )
             ],
             spacing=20,
