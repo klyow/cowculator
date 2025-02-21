@@ -180,7 +180,7 @@ def main(page: ft.Page):
             all(card in face_cards for card in score_combination if card != 'X')
         ):
             score_sum = 45
-            score_name = "Five Dukes (with a Joker)"
+            score_name = "Five Dukes*"
         # Ngau Tunku
         elif any(card == 'A' for card in score_combination) and any(card in face_cards for card in score_combination):
             score_sum = 40   
@@ -191,7 +191,7 @@ def main(page: ft.Page):
             any(card in face_cards or card == 'A' for card in score_combination)
         ):
             score_sum = 35
-            score_name = "Ngau Tunku (with Joker)"
+            score_name = "Ngau Tunku*)"
         # Pair
         elif score_combination[0] == score_combination[1]: 
             print(score_combination[0])
@@ -200,11 +200,10 @@ def main(page: ft.Page):
         # Pair (with Joker)
         elif score_combination[0] == 'X':
             score_sum = 10 + (score_combination_values[1] * 2) - 1
-            score_name = f"Pair of {str(score_combination[1])}s (with a Joker)"
+            score_name = f"Pair of {str(score_combination[1])}s*"
         # Regular Ngau
         else:
-            if score_sum > 10:
-                score_sum %= 10                   
+            score_sum = (score_sum - 1) % 10 + 1       
             score_name = f"Ngau {score_sum}"
         
         return score_sum, score_name
